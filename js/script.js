@@ -1,13 +1,12 @@
 var progreso = 0;
-      var idInterval = setInterval(function(){
-        // Aumento en 10 el progeso
-        progreso +=1;
+ 
+ function widthpercent() { 
+
+
+        progreso++;
         //2
         if(progreso<=100){
-           $('#bar').css('width', progreso + '%');
-        }
-        if(progreso<=100){
-           $('#bar_0').css('width', progreso + '%');
+           $('.bar').css('width', progreso + '%');
         }
         //1
         if(progreso<=95){
@@ -19,17 +18,13 @@ var progreso = 0;
         }
         //2
          if(progreso<=80){
-           $('#bar3').css('width', progreso + '%');
-        }
-        if(progreso<=80){
-           $('#bar_3').css('width', progreso + '%');
+           $('.bar3').css('width', progreso + '%');
         }
         //2
         if(progreso<=60){
-           $('#bar4').css('width', progreso + '%');
+           $('.bar4').css('width', progreso + '%');
         }
-         if(progreso<=60){
-           $('#bar_4').css('width', progreso + '%');
-        }
+        
+        if(progreso==100){clearInterval(id);} };
 
-      },100);
+var id = setInterval( widthpercent, 100 );

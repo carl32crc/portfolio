@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reloj</title>
+	<style>
+	main div { width: 50px; height: 50px; background: orange;
+		margin: 20px;
+		font-size: 32px;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+		align-items: center;	
+	}
+	#hms{height: 200px;
+		text-align: center;
+		background: orange;
+		color:white;
+		font-size: 120px;}
+	</style>
+</head>
+<body>
+
+	<div id="hms"></div>
+<script src="https://code.jquery.com/jquery-2.0.3.js"></script>	
+<script>
+var myDate = new Date();
+var myHour = myDate.getHours();
+var myMinute = myDate.getMinutes();
+var mySecond = myDate.getSeconds();
+
+function menorZero(num){
+	 var concat;
+
+	 if ( num < 10 ) {concat = '0' + num.toString();}
+	 else{concat=num.toString();}
+
+     return concat;
+}
+
+function mostrarHora() {
+	// var miReloj = $('.reloj');
+	// miReloj.find('.hours').text(myHour);
+	// miReloj.find('.minutes').text(myMinute);
+	// miReloj.find('.seconds').text(mySecond);
+	
+
+	$('#hms').text(menorZero(myHour) + ':' + menorZero(myMinute) + ':' + menorZero(mySecond));
+	//alert(typeof(myHour)==='number');
+}
+
+function tiempo() { 
+	mySecond++;
+	if ( mySecond > 59 ) {
+		mySecond = 0;
+		myMinute++;
+		// if ( myMinute < 10) myMinute = '0' + myMinute.toString();
+	    
+		if ( myMinute > 59 ) {
+			myMinute = 0;
+			myHour++;
+			if ( myHour > 23 ) {
+				myHour = 0
+				// if ( myHour < 10) myHour = '0' + myHour.toString();
+
+			}
+		}
+	}
+
+	// if ( mySecond < 10) {mySecond = '0' + mySecond.toString()};
+	mostrarHora();
+}
+
+var xx = setInterval(tiempo, 1000);
+
+</script>
+</body>
+</html>
